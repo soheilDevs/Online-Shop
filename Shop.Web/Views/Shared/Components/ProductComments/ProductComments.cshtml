@@ -1,0 +1,23 @@
+﻿@using Shop.Application.Extentions
+@using Shop.Application.Utils
+@model List<Shop.Domain.Models.ProductEntity.ProductComment>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var productComment in Model)
+    {
+        <div class="review">
+            <div class="row no-gutters">
+                <div class="col-auto">
+                    <h4><a>@productComment.User.GetUserName()</a></h4>
+                    <div class="ratings-container">
+                    </div>
+                    <span class="review-date">@productComment.CreateData.ToStringShamsiDate()</span>
+                </div>
+                <div class="col-12">
+                    @productComment.Text
+                </div>
+            </div>
+        </div>
+    }
+}

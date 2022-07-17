@@ -1,0 +1,55 @@
+﻿@model Shop.Domain.ViewModels.Site.Sliders.EditSliderViewModel
+@{
+    ViewData["Title"] = "ویرایش اسلایدر";
+}
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <p class="card-text">ثبت اطلاعات</p>
+                <form asp-area="Admin" asp-controller="Site" asp-action="EditSlider" method="post" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="SliderId" />
+                    <div class="form-group">
+                        <label class="form-label">عنوان</label>
+                        <input class="form-control" asp-for="SliderTitle">
+                        <span asp-validation-for="SliderTitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">متن</label>
+                        <input class="form-control" asp-for="SliderText">
+                        <span asp-validation-for="SliderText" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"> آدرس</label>
+                        <input class="form-control" asp-for="Href">
+                        <span asp-validation-for="Href" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"> متن دکمه</label>
+                        <input class="form-control" asp-for="TextBtn">
+                        <span asp-validation-for="TextBtn" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">عکس</label>
+                        <input class="form-control" type="file" name="ImageFile">
+                    </div>
+                    <img src="@(PathExtensions.SliderThumb+Model.SliderImage)"/>
+
+                    <div class="mt-5">
+                        <button type="submit" class="btn btn-success btn-block">ثبت اطلاعات</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section scripts{
+    <partial name="_ValidationScripts" />
+}
+
+
+
